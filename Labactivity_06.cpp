@@ -21,12 +21,9 @@ int main() {
         cin >> n;
 
         Student students[100];
-
-        // Input loop
         for (int i = 0; i < n; i++) {
             cout << "\n--- Student " << (i + 1) << " ---\n";
-
-            // Student ID with uniqueness check
+            
             int id;
             while (true) {
                 cout << "Student ID: ";
@@ -55,7 +52,6 @@ int main() {
             cout << "Course: ";
             getline(cin, students[i].course);
 
-            // GPA validation
             float gpa;
             while (true) {
                 cout << "GPA (0-100): ";
@@ -68,27 +64,20 @@ int main() {
                 }
             }
         }
-
-        // Display table
         cout << "\n===== Student Records =====\n";
-
-        // Top border
         cout << "-" << string(12, '-')
              << "-" << string(25, '-')
              << "-" << string(20, '-')
              << "-" << string(10, '-')
              << "-" << string(15, '-')
              << "+\n";
-
-        // Header
         cout << "-" << left << setw(11) << "Student ID"
              << "-" << setw(24) << "Name"
              << "- " << setw(19) << "Course"
              << "-" << setw(9)  << "GPA"
              << "-" << setw(14) << "Standing"
              << "|\n";
-
-        // Header divider
+        
         cout << "-" << string(12, '-')
              << "-" << string(25, '-')
              << "-" << string(20, '-')
@@ -96,10 +85,8 @@ int main() {
              << "-" << string(15, '-')
              << "+\n";
 
-        // Rows
         for (int i = 0; i < n; i++) {
 
-            // Determine standing
             string standing;
             if (students[i].gpa >= 90)      standing = "Excellent";
             else if (students[i].gpa >= 80) standing = "Very Good";
@@ -107,19 +94,16 @@ int main() {
             else if (students[i].gpa >= 60) standing = "Passing";
             else                            standing = "Failed";
 
-            // Format GPA
             ostringstream gpaStr;
             gpaStr << fixed << setprecision(2) << students[i].gpa;
 
-            // Print row
             cout << "| " << left << setw(11) << students[i].studentID
                  << "| " << setw(24) << students[i].name
                  << "| " << setw(19) << students[i].course
                  << "| " << setw(9)  << gpaStr.str()
                  << "| " << setw(14) << standing
                  << "|\n";
-
-            // Row divider
+            
             cout << "-" << string(12, '-')
                  << "-" << string(25, '-')
                  << "-" << string(20, '-')
